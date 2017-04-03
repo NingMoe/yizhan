@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="pics_line"></view>
+
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_b">
+        <view class="pics_b_bg"></view>
+        <view class="pics_b_font">xx活动</view>
+    </view>
+    <view class="pics_t">
+        <view class="pics_t_bg">进入照片直播</view>
+    </view>
+</view>
+
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_b">
+        <view class="pics_b_bg"></view>
+        <view class="pics_b_font">xx活动</view>
+    </view>
+    <view class="pics_t">
+        <view class="pics_t_bg">照片回看</view>
+    </view>
+</view>

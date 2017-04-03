@@ -1,0 +1,62 @@
+<!--pics2.wxml-->
+<view ><navigator url=""><image bindload="imgl" style="width:100%; height:{{imageHeight2}}px;" src="../../images/adv1.jpg" ></image></navigator></view>
+
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_c">
+        <view class="pics_c_bg circle"></view>
+        <navigator url="">
+            <view class="pics_c_font">
+                <span>颁奖时刻</span>
+                <label>照片直播</label>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_c">
+        <view class="pics_c_bg circle"></view>
+        <navigator url="">
+            <view class="pics_c_font">
+                <span>颁奖时刻</span>
+                <label>照片直播</label>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_c">
+        <view class="pics_c_bg circle"></view>
+        <navigator url="">
+            <view class="pics_c_font">
+                <span>颁奖时刻</span>
+                <label>照片直播</label>
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="pics">
+    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <view class="pics_c">
+        <view class="pics_c_bg circle"></view>
+        <navigator url="">
+            <view class="pics_c_font">
+                <span>颁奖时刻</span>
+                <label>照片直播</label>
+            </view>
+        </navigator>
+    </view>
+</view>
+
+<view class="pics_under"></view>
+
+<view class="book_white">
+    <navigator><view class="book_btn">预约直播</view></navigator>
+</view>
+
+<view class="down_btn circle">
+    <view class="down_btn_in circle iconfont icon-xiangxiajiantou"></view>
+</view>
+

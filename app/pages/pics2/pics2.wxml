@@ -1,0 +1,39 @@
+<!-- pics2.wxml -->
+<view class="pics2">
+    <navigator url="">
+        <image bindload="imgl" style="width:100%; height:{{imageHeight2}}px;" src="../../images/adv2.jpg"></image>
+    </navigator>
+    <view class="pics2_in">
+        <view class="pics2_in_font">
+            <ul bindtap="tabFun">
+                <view class="pics2_total">
+                    <label class="iconfont icon-tupian"></label>
+                    <span>200</span>
+                </view>
+                <li class="{{tabArr.curHdIndex=='0'? 'active' : ''}}" id="tab-hd01" data-id="0">全部</li>
+                <li class="{{tabArr.curHdIndex=='1'? 'active' : ''}}" id="tab-hd02" data-id="1">签到</li>
+                <li class="{{tabArr.curHdIndex=='2'? 'active' : ''}}" id="tab-hd03" data-id="2">颁奖</li>
+                <li class="{{tabArr.curHdIndex=='3'? 'active' : ''}}" id="tab-hd04" data-id="3">演讲</li>
+            </ul>
+        </view>
+        <view class="pics2_in_bg"></view>
+    </view>
+</view>
+
+
+<view class="tab_b">
+    <view class="down-item {{tabArr.curBdIndex=='0'? 'active' : ''}}">
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+        <image style="width:175rpx; height:175rpx;" src="../../images/pic2.jpg"></image>
+    </view>
+    <view class="down-item {{tabArr.curBdIndex=='1'? 'active' : ''}}">和上一个view一样2</view>
+    <view class="down-item {{tabArr.curBdIndex=='2'? 'active' : ''}}">和上一个view一样3</view>
+    <view class="down-item {{tabArr.curBdIndex=='3'? 'active' : ''}}">和上一个view一样4</view>
+</view>
+

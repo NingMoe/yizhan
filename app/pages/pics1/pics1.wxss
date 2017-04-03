@@ -1,0 +1,19 @@
+/**pics2.wxss**/
+body{background: #fff;}
+.pics_line{width: 96%; margin:0 auto; border-top: 1px solid #808080;}
+.pics{width: 96%; margin:0 auto; margin-top: 16px; position: relative; background: #999;}
+.pics image{width: 100%; display: block}
+
+.pics_c{width: 100px; height: 100px; position: absolute; top: 50%; margin-top: -50px; left: 50%; margin-left: -50px; text-align: center;}
+.pics_c_bg{width: 100px; height: 100px; position: absolute; top: 0; left: 0; background: #cb3119; filter:alpha(opacity=80);-moz-opacity: 0.8;opacity: 0.8; color: #fff; font-size: 12px; text-align: center; z-index: 999;}
+.pics_c_font{width: 100px; height: 100px; position: absolute; top: 0; left: 0; color: #fff; z-index: 99999;}
+.pics_c_font span{font-size: 18px; font-weight: bold; display: block; margin-top: 25px;}
+.pics_c_font label{font-size: 14px;  display: block;}
+
+.pics_under{width: 100%; height: 60px;}
+
+.book_white{width: 100%; padding: 5px 0 8px 0; background: #fff; position: fixed; bottom: 0; left: 0; z-index: 9999999;}
+.book_btn{width: 96%; height: 40px; margin: 0 auto; line-height: 40px; background: #2f3850; font-size: 16px; color: #fff; border-radius: 8px; text-align: center;}
+
+.down_btn{width: 40px; height: 40px; position: fixed; background: #000;  filter:alpha(opacity=70);-moz-opacity: 0.7;opacity: 0.7; right: 10px; bottom: 80px;}
+.down_btn_in{width: 34px; height: 34px; color: #fff; text-align: center; line-height: 38px; border: 1px solid #fff; position: absolute; top: 2px; left: 2px; filter:alpha(opacity=50);-moz-opacity: 0.5;opacity: 0.5; font-size: 30px;}
