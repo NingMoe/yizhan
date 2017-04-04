@@ -1,0 +1,28 @@
+﻿@model yizhan.web.ViewModels.ActEditVm
+@{
+    string title="";
+    switch (Model.Act.Depth)
+    {
+        case 1:
+            title = "活动项目";
+            break;
+        case 2:
+            title = "环节";break;
+        case 3:
+            title = "照片";break;
+    }
+}
+<div id="form" class="formbody">
+    <input type="hidden" prop-name="Id" value="@Model.Fid" />
+    <input tpype="hidden" prop-name="ParentFId" value="@Model.ParentFid" />
+    <div class="formtitle"><span>@title</span></div>
+    <ul class="forminfo">
+        <li><label>标题</label><input prop-name="Name" type="text" class="dfinput"><i>标题不能超过10个字符</i></li>
+        <li><label>&nbsp;</label><span class="fileList"><img id="photoPreview" /></span></li>
+        <li><label>照片</label><input type="file" value="选择照片" class="addImg"><input class="photoUrl" prop-name="PhotoUrl" type="hidden" value="" /></li>
+        <li><label>是否启用</label><cite><input prop-name="Enable" name="enable" type="radio" value="" checked="checked">是&nbsp;&nbsp;&nbsp;&nbsp;<input prop-name="Enable" name="enable" type="radio" value="">否</cite></li>
+        <li><label>排序</label><input prop-name="OrderIndex" name="" type="text" class="dfinput" value="http://www.mycodes.net"></li>
+        <li><label>&nbsp;</label><input type="button" class="submit" value="确认保存"></li>
+    </ul>
+</div>
+<script src="~/js/pages/actedit.js"></script>

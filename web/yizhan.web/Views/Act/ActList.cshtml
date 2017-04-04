@@ -1,0 +1,86 @@
+﻿@using yizhan.web.Models
+@model yizhan.web.ViewModels.ActListVm
+@section BreadCrumbs{
+    <li>首页</li>
+    <li>活动项目</li>
+}
+<div class="rightinfo">
+    <div class="tools">
+        <ul class="toolbar">
+            <li class="click"><span><img src="~/images/t01.png" /></span>添加</li>
+        </ul>
+    </div>
+
+    <ul id="list" class="imglist">
+        @foreach (var item in Model.Acts)
+        {
+            <li>
+                <input class="Id" type="hidden" value="@item.Id"/>
+                <span><img src="@YzUrlHelper.PhotoUrl(item.PhotoUrl)" /></span>
+                <h2>
+                    @if (item.Depth < 2)
+                    {
+                        <a href="@Url.Action("ActList", new {fid = item.Id, pn = 1})">@item.Name</a>
+                    }
+                    else
+                    {
+                        <a href="@item.PhotoUrl">@item.Name</a>
+                    }
+                </h2>
+                <p>
+                    <a href="@Url.Action("ActEdit", new {fid = item.Id})">编辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="del" href="javascript:void(0)" onclick="return false">删除</a>
+                </p>
+            </li>
+        }
+    </ul>
+
+    <div class="pagin">
+        <div class="message">共<i class="blue">@Model.TotalCount</i>条记录
+        </div>
+        <div id="pager" class="paginList">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('#pager').pagination({
+            totalData: @Model.TotalCount,
+            showData: @Model.PageSize,
+            current: @Model.Pn,
+            coping: true,
+            callback: function(api) {
+                var data = {
+                    page: api.getCurrent()
+                };
+
+                var url = @Url.Action("ActList", new {fid = Model.Fid}) + "&pn=" + data.page;
+                location.href = url;
+            }
+        });
+
+        var lockobj = {};
+        $('#list .del').click(function() {
+            $form.find('.submit').click(function() {
+                tool.request({
+                    url: 'ActEditPost',
+                    data: {fid:$(this).find('id').val()} ,
+                    dataType: 'json',
+                    type: "POST",
+                    success: function (d) {
+                        if (d.Success) {
+                            tool.tip('保存成功');
+                        } else
+                            tool.tip(d.Info);
+                    },
+                    error: function (e, d) {
+                        tool.tip('操作失败');
+                    }
+                }, lockobj);
+            });
+        });
+    </script>
+@section HeaderScript{
+    <link href="~/js/pagination/common.css" rel="stylesheet" />
+    <link href="~/js/pagination/pagination.css" rel="stylesheet" />
+    <script src="~/js/pagination/jquery.pagination.js"></script>
+}
+</div>

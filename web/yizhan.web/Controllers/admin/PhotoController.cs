@@ -8,6 +8,6 @@ namespace yizhan.web.Controllers.admin
 {
     public class PhotoController : Controller
     {
-        
+
     }
 }
