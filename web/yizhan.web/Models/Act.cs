@@ -10,7 +10,7 @@ namespace yizhan.web.Models
     {
         public Act()
         {
-            PrimaryKey = "OId";
+            PrimaryKey = "Id";
             IsAutoId = true;
             ConnName = DbEnum.yizhan.ToString();
         }
@@ -48,5 +48,10 @@ namespace yizhan.web.Models
         /// 父级活动项目Id
         /// </summary>
         public int ParentFid { get; set; }
+
+        /// <summary>
+        /// 根节点
+        /// </summary>
+        public int RootFid { get; set; }
     }
 }

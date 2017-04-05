@@ -25,7 +25,8 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    baseUrl:'https://yuchao8910.tunnel.qydev.com/api/'
   }
 })
 
