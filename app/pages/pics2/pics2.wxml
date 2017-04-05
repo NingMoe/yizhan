@@ -1,7 +1,7 @@
 <!-- pics2.wxml -->
 <view class="pics2">
     <navigator url="">
-        <image bindload="imgl" style="width:100%; height:{{imageHeight2}}px;" src="../../images/adv2.jpg"></image>
+        <image style="width:750rpx; height:226rpx;" src="../../images/adv2.jpg"></image>
     </navigator>
     <view class="pics2_in">
         <view class="pics2_in_font">

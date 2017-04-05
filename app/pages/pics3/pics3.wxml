@@ -1,5 +1,5 @@
 <view class="pics3">
-    <navigator url=""><image bindload="imgl" style="width:100%; height:{{imageHeight2}}px;" src="../../images/pic3.jpg" ></image></navigator>
+    <navigator url=""><image style="width:750rpx; height:512rpx;" src="../../images/pic3.jpg" ></image></navigator>
     <view class="pics3_close iconfont icon-tubiaozitihua03"></view>
 </view>
 <view class="pics3_b">请长安保存图片 / 177K</view>

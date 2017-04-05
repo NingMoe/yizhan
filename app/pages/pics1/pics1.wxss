@@ -1,8 +1,8 @@
 /**pics2.wxss**/
 body{background: #fff;}
 .pics_line{width: 96%; margin:0 auto; border-top: 1px solid #808080;}
-.pics{width: 96%; margin:0 auto; margin-top: 16px; position: relative; background: #999;}
-.pics image{width: 100%; display: block}
+.pics{width: 100%; margin:0 auto; margin-top: 16px; position: relative; text-align: center;}
+
 
 .pics_c{width: 100px; height: 100px; position: absolute; top: 50%; margin-top: -50px; left: 50%; margin-left: -50px; text-align: center;}
 .pics_c_bg{width: 100px; height: 100px; position: absolute; top: 0; left: 0; background: #cb3119; filter:alpha(opacity=80);-moz-opacity: 0.8;opacity: 0.8; color: #fff; font-size: 12px; text-align: center; z-index: 999;}

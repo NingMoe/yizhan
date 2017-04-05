@@ -1,8 +1,8 @@
 <!--pics2.wxml-->
-<view ><navigator url=""><image bindload="imgl" style="width:100%; height:{{imageHeight2}}px;" src="../../images/adv1.jpg" ></image></navigator></view>
+<view ><navigator url=""><image style="width:750rpx; height:170rpx; " src="../../images/adv1.jpg" ></image></navigator></view>
 
 <view class="pics">
-    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
     <view class="pics_c">
         <view class="pics_c_bg circle"></view>
         <navigator url="">
@@ -14,7 +14,7 @@
     </view>
 </view>
 <view class="pics">
-    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
     <view class="pics_c">
         <view class="pics_c_bg circle"></view>
         <navigator url="">
@@ -26,7 +26,7 @@
     </view>
 </view>
 <view class="pics">
-    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
     <view class="pics_c">
         <view class="pics_c_bg circle"></view>
         <navigator url="">
@@ -38,7 +38,7 @@
     </view>
 </view>
 <view class="pics">
-    <navigator url=""><image bindload="imageLoad" style="width:100%; height:{{imageHeight}}px;" src="../../images/pic1.jpg" ></image></navigator>
+    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
     <view class="pics_c">
         <view class="pics_c_bg circle"></view>
         <navigator url="">

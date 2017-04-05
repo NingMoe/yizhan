@@ -1,11 +1,10 @@
 /**index.wxss**/
 body{background: #fff;}
 .pics_line{width: 96%; margin:0 auto; border-top: 1px solid #808080;}
-.pics{width: 96%; margin:0 auto; margin-top: 16px; position: relative; background: #999;}
-.pics image{width: 100%; display: block}
-.pics_b{width:100%; height: 40px; position: absolute; bottom: 0; left: 0;}
+.pics{width: 100%; margin:0 auto; margin-top: 16px; position: relative; text-align: center;}
+.pics_b{width:730rpx; height: 40px; position: absolute; bottom: 7px; left: 50%; margin-left: -363rpx;}
 .pics_b_bg{width: 100%; height: 40px; position: absolute; bottom: 0; left: 0; background: #323c54; filter:alpha(opacity=60);-moz-opacity: 0.6;opacity: 0.6;}
 .pics_b_font{width: 100%; height: 40px; position: absolute; bottom: 0; left: 0; text-align: center; line-height:  40px; color: #fff; font-size: 16px;}
 .pics_t{height: 20px; line-height: 20px; position: absolute; top: 0; right: 0;}
-.pics_t_bg{width:80px; height: 24px; line-height: 24px; position: absolute; top: 0; right: 0; background: #cb3119; filter:alpha(opacity=80);-moz-opacity: 0.8;opacity: 0.8; color: #fff; font-size: 12px; text-align: center; border-bottom-left-radius: 5px;}
+.pics_t_bg{width:80px; height: 24px; line-height: 24px; position: absolute; top: 0; right: 10rpx; background: #cb3119; filter:alpha(opacity=80);-moz-opacity: 0.8;opacity: 0.8; color: #fff; font-size: 12px; text-align: center; border-bottom-left-radius: 5px;}
 .pics_t_bg a{color: #fff;}
