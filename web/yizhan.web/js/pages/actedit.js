@@ -80,6 +80,8 @@
     var lockobj = {};
     $form.find('.submit').click(function () {
         var p=tool.getParams($form);
+        if (p == null)
+            return;
 
         tool.request({
             url: 'DeletePost',

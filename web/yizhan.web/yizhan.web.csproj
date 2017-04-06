@@ -297,7 +297,6 @@
     <Content Include="js\artdialog\src\drag.js" />
     <Content Include="js\artdialog\src\global_modules\jquery.js" />
     <Content Include="js\artdialog\src\popup.js" />
-    <Content Include="js\artdialog\ui-dialog.css" />
     <Content Include="js\cloud.js" />
     <Content Include="js\format+zh_CN,default,corechart.I.js" />
     <Content Include="js\jquery-3.2.0.min.js" />
@@ -307,6 +306,7 @@
     <Content Include="js\jquery.js" />
     <Content Include="js\jsapi.js" />
     <Content Include="js\pages\actedit.js" />
+    <Content Include="js\pages\login.js" />
     <Content Include="js\pagination\common.css" />
     <Content Include="js\pagination\jquery.pagination.js" />
     <Content Include="js\pagination\pagination.css" />
@@ -344,6 +344,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Act.cs" />
+    <Compile Include="Models\AdminUser.cs" />
     <Compile Include="Models\enum.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\UrlHelper.cs" />
@@ -365,6 +366,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="js\webuploader\README.md" />
+    <None Include="Views\Home\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

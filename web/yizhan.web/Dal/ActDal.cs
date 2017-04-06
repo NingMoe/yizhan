@@ -89,40 +89,72 @@ namespace yizhan.web.Dal
         /// <returns></returns>
         public ReMsg EditAct(Act model)
         {
+            if (model.Id > 0)
+            {
+                return UpdateAct(model);
+            }
+            else
+            {
+                return AddAct(model);
+            }
+        }
+
+        /// <summary>
+        /// 新增活动项目
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private ReMsg AddAct(Act model)
+        {
             if (model.ParentFid > 0)
             {
                 var parentAct = GetModel(model.ParentFid);
                 if (parentAct == null)
-                return ReMsg(false,"父级活动项目不存在");
+                    return ReMsg(false, "父级活动项目不存在");
 
                 if (parentAct.Depth >= 3)
                     return ReMsg(false, "超出板块层级最大限制");
-            }
 
-            if(string.IsNullOrEmpty(model.PhotoUrl))
-                return ReMsg(false,"请上传照片");
-
-            if (model.Id <= 0)
-            {
-                Add(model);
+                model.Depth = parentAct.Depth +1;
+                model.RootFid = parentAct.RootFid;
             }
             else
             {
-                var act = GetModel(model.Id);
-                if (act == null)
-                    return ReMsg(false, "指定活动项目不存在");
-
-                act.ParentFid = model.ParentFid;
-                act.Depth = model.ParentFid + 1;
-                act.Enable = model.Enable;
-                act.Name = model.Name;
-                act.OrderIndex = model.OrderIndex;
-                act.PhotoUrl = model.PhotoUrl;
-
-                Update(act);
+                model.RootFid = 0;
             }
 
-            return ReMsg(true, "保存成功");
+            model.Depth = 1;
+
+            model.Id = Add(model);
+
+            if (model.RootFid == 0)
+            {
+                model.RootFid = model.Id;
+                Update(model, "RootFid");
+            }
+
+            return ReMsg(true, "新增成功");
+        }
+
+        /// <summary>
+        /// 修改活动项目
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        private ReMsg UpdateAct(Act model)
+        {
+            var act = GetModel(model.Id);
+            if (act == null)
+                return ReMsg(false, "指定活动项目不存在");
+
+            act.Enable = model.Enable;
+            act.Name = model.Name;
+            act.OrderIndex = model.OrderIndex;
+            act.PhotoUrl = model.PhotoUrl;
+
+            Update(act);
+
+            return ReMsg(true, "修改成功");
         }
 
         /// <summary>
