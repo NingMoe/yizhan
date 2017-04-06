@@ -2,12 +2,20 @@
 @model yizhan.web.ViewModels.ActListVm
 @section BreadCrumbs{
     <li>首页</li>
-    <li>活动项目</li>
+    <li><a href="@Url.Action("ActList")">活动项目</a></li>
+    @foreach (var item in Model.ParentList)
+    {
+        <li><a href="@Url.Action("ActList", new {fid = item.Id})">@item.Name</a></li>
+    }
+    @if (Model.Act != null)
+    {
+        <li><a href="@Url.Action("ActList", new {fid = Model.Act.Id})">@Model.Act.Name</a></li>
+    }
 }
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click"><span><img src="~/images/t01.png" /></span>添加</li>
+            <li class="click"><a href="@Url.Action("ActEdit", new { parentFid = Model.Fid })"><span><img src="~/images/t01.png" /></span>添加</a></li>
         </ul>
     </div>
 
@@ -52,14 +60,14 @@
                     page: api.getCurrent()
                 };
 
-                var url = @Url.Action("ActList", new {fid = Model.Fid}) + "&pn=" + data.page;
+                var url = '@Url.Action("ActList", new {fid = Model.Fid})' + "&pn=" + data.page;
                 location.href = url;
             }
         });
 
         var lockobj = {};
         $('#list .del').click(function() {
-            $form.find('.submit').click(function() {
+            function submit() {
                 tool.request({
                     url: 'ActEditPost',
                     data: {fid:$(this).find('id').val()} ,
@@ -75,12 +83,20 @@
                         tool.tip('操作失败');
                     }
                 }, lockobj);
-            });
+            }
+
+            dialog({
+                content: "确认要删除吗？",
+                okValue: '确 定',
+                ok: submit,
+                quickClose: true,
+                cancelValue: '取消',
+                cancel: function () { }
+            }).show();
         });
     </script>
 @section HeaderScript{
-    <link href="~/js/pagination/common.css" rel="stylesheet" />
-    <link href="~/js/pagination/pagination.css" rel="stylesheet" />
+
     <script src="~/js/pagination/jquery.pagination.js"></script>
 }
 </div>

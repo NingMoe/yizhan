@@ -16,7 +16,7 @@ $('#btnSubmit').click(function () {
                 tool.tip(d.Info);
         },
         error: function (e, d) {
-            tool.tip('操作失败');
+            tool.tip('网络异常');
         }
     });
 });

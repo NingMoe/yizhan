@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using com.ccfw.Dal.Base;
+using com.ccfw.Utility;
 using yizhan.web.Models;
 
 namespace yizhan.web.Controllers.admin
@@ -58,8 +59,13 @@ namespace yizhan.web.Controllers.admin
             };
 
             var success = new BaseDAL<AdminUser>().Exists("UserName=@UserName and Pw=@Pw",parms);
-
+            SetCookie(user);
             return Json(success);
+        }
+
+        private void SetCookie(string uid)
+        {
+            CookieHelper.SetCookie("uid", uid);
         }
     }
 }

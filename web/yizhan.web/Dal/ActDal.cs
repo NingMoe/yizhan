@@ -28,8 +28,8 @@ namespace yizhan.web.Dal
 
             CDirectory.Create(filePath);
             var fileFullName = Path.Combine(filePath, fileName);
-            var b = MakeThumbnail(filePosted.InputStream, fileFullName, 300, 250, 80);
-            return ReMsg(b, b ? "/" + fileUrl + fileName : "缩略图存储失败");
+            var b = MakeThumbnail(filePosted.InputStream, fileFullName, 730, 336, 80);
+            return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
         }
 
         /// <summary>

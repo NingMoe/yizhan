@@ -12,7 +12,7 @@ namespace yizhan.web.Models
         /// </summary>
         public static string PhotoBasePath
         {
-            get { return "photo"; }
+            get { return "/photo"; }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace yizhan.web.ViewModels
         /// </summary>
         public Act Act
         {
-            get { return _act ?? (_act = ActDal.GetModel(Fid)); }
+            get { return _act ?? (_act = ActDal.GetModel(Fid)??new Act()); }
         }
 
         private int _fid;
@@ -43,8 +43,33 @@ namespace yizhan.web.ViewModels
         {
             get
             {
-                return _parentAct ?? (_parentAct=ActDal.GetModel(ParentFid));
+                return _parentAct ?? (_parentAct = ActDal.GetModel(Act.ParentFid==0? ParentFid : Act.ParentFid));
             }
         }
+
+        private List<Act> _parentList;
+
+        public List<Act> ParentList
+        {
+            get
+            {
+                if (_parentList != null)
+                    return _parentList;
+
+                _parentList = new List<Act>();
+                if (ParentAct != null)
+                {
+                    _parentList.Add(ParentAct);
+
+                    if (ParentAct.ParentFid > 0)
+                    {
+                        _parentList.Add(ActDal.GetModel(ParentAct.ParentFid));
+                    }
+                }
+                _parentList=_parentList.OrderBy(_ => _.Depth).ToList();
+
+                return ParentList;
+            }
+        } 
     }
 }

@@ -1,24 +1,14 @@
 <!--index.wxml-->
 <view class="pics_line"></view>
-
-<view class="pics">
-    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
-    <view class="pics_b">
-        <view class="pics_b_bg"></view>
-        <view class="pics_b_font">xx活动</view>
-    </view>
-    <view class="pics_t">
-        <view class="pics_t_bg">进入照片直播</view>
-    </view>
-</view>
-
-<view class="pics">
-    <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
-    <view class="pics_b">
-        <view class="pics_b_bg"></view>
-        <view class="pics_b_font">xx活动</view>
-    </view>
-    <view class="pics_t">
-        <view class="pics_t_bg">进入照片直播</view>
+<view wx:for="{{acts}}">
+    <view class="pics" >
+        <navigator url=""><image style="width:730rpx; height:336rpx;" src="{{website}}{{item.PicUrl}}" ></image></navigator>
+        <view class="pics_b">
+            <view class="pics_b_bg"></view>
+            <view class="pics_b_font">{{item.Name}}</view>
+        </view>
+        <view class="pics_t">
+            <view class="pics_t_bg">进入照片直播</view>
+        </view>
     </view>
 </view>

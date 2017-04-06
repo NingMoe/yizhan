@@ -61,7 +61,7 @@ namespace yizhan.web.ViewModels
                 if(_where!=null)
                     return _where;
 
-                return _where = _fid == 0 ? "" : "ParentId=" + _fid;
+                return _where = _fid == 0 ? "" : "ParentFId=" + _fid;
             }
         }
 
@@ -73,6 +73,40 @@ namespace yizhan.web.ViewModels
 
         public int Pn { get { return _pn;} }
 
-        
+        private List<Act> _parentList;
+
+        public List<Act> ParentList
+        {
+            get
+            {
+                if (_parentList != null)
+                    return _parentList;
+
+                _parentList = new List<Act>();
+                if (Act == null)
+                    return _parentList;
+
+                var parent = ActDal.GetModel(Act.ParentFid);
+                if (parent != null)
+                {
+                    _parentList.Add(parent);
+
+                    if (parent.ParentFid > 0)
+                    {
+                        _parentList.Add(ActDal.GetModel(parent.ParentFid));
+                    }
+                }
+                _parentList = _parentList.OrderBy(_ => _.Depth).ToList();
+
+                return ParentList;
+            }
+        }
+
+        private Act _act;
+
+        public Act Act
+        {
+            get { return _act ?? (_act = ActDal.GetModel(Fid)); }
+        }
     }
 }

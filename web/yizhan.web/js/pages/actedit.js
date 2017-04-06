@@ -14,7 +14,7 @@
         auto: true,
 
         // swf文件路径
-        swf: '/js/plugin/webuploader/Uploader.swf',
+        swf: '/js/webuploader/Uploader.swf',
 
         // 文件接收服务端。
         server: 'uploadPhoto',
@@ -42,8 +42,8 @@
 
     uploader.on('uploadSuccess', function (file, d) {
         if (d.success) {
-            $img.attr('src', '/photo/'+d.msg);
-            $photoUrl.val(d.message);
+            $img.attr('src', d.msg);
+            $photoUrl.val(d.msg);
         } else {
             tool.tip(d.msg);
         }
