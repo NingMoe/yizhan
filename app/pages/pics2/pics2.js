@@ -1,30 +1,39 @@
+Page({
+    data: {
+        fid: 0,
+        acts: {}
+    },
 
-  
-Page({  
-  data:{  
-        
-        tabArr: {
-           curHdIndex: 0,
-           curBdIndex: 0
-         },
-      images:{}
+    onLoad: function (options) {
+        var that = this;
+        this.setData({
+            fid: options.fid
+        });
 
-  },  
-  tabFun: function(e){
-    //获取触发事件组件的dataset属性
-    var _datasetId=e.target.dataset.id;
-    console.log("----"+_datasetId+"----");
-    var _obj={};
-    _obj.curHdIndex=_datasetId;
-    _obj.curBdIndex=_datasetId;
-    this.setData({
-      tabArr: _obj
-    });
-  },
-  onLoad: function( options ) {
-    alert( "------" );
-  }
-  
-})   
+        //获取环节
+        wx.request({
+            url: that.data.website + 'Steps',
+            method: "post",
+            data: { fid: this.data.fid },
+            success: function (res) {
+                that.setData({
+                    acts: res.data
+                });
+            }
+        });
+
+        //获取照片
+        wx.request({
+            url: that.data.website + 'Photos',
+            method: "post",
+            data: { fid: this.data.fid, pn: 1 },
+            success: function (res) {
+                that.setData({
+                    acts: res.data
+                });
+            }
+        });
+    }
+})
 
 

@@ -2,20 +2,17 @@
 @model yizhan.web.ViewModels.ActEditVm
 @{
     string title="";
-    if (Model.Act != null)
+    switch (Model.ParentAct == null ? 0 : Model.ParentAct.Depth)
     {
-        switch (Model.Act.Depth)
-        {
-            case 1:
-                title = "活动项目";
-                break;
-            case 2:
-                title = "环节";
-                break;
-            case 3:
-                title = "照片";
-                break;
-        }
+        case 0:
+            title = "活动项目";
+            break;
+        case 1:
+            title = "环节";
+            break;
+        case 2:
+            title = "照片";
+            break;
     }
 }
 @section BreadCrumbs{
@@ -25,7 +22,7 @@
     {
         <li><a href="@Url.Action("ActList",new {fid=item.Id})">@item.Name</a></li>
     }
-    @if (Model.Act != null)
+    @if (Model.Fid>0)
     {
         <li><a href="@Url.Action("ActList", new { fid = Model.Act.Id })">@Model.Act.Name</a></li>
     }
@@ -33,7 +30,7 @@
 <div id="form" class="formbody">
     <input type="hidden" prop-name="Id" value="@Model.Fid" />
     <input type="hidden" prop-name="ParentFId" value="@Model.ParentFid" />
-    <div class="formtitle"><span>@title</span></div>
+    <div class="formtitle"><span>@(Model.Fid>0?"修改":"添加")@title</span></div>
     <ul class="forminfo">
         <li><label>标题</label><input prop-name="Name" type="text" class="dfinput" value="@Model.Act.Name" empty="标题不能为空"></li>
         <li><label>&nbsp;</label><span class="fileList"><img id="photoPreview" /></span></li>

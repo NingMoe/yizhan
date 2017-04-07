@@ -41,11 +41,11 @@
     });
 
     uploader.on('uploadSuccess', function (file, d) {
-        if (d.success) {
-            $img.attr('src', d.msg);
-            $photoUrl.val(d.msg);
+        if (d.Success) {
+            $img.attr('src', d.Info);
+            $photoUrl.val(d.Info);
         } else {
-            tool.tip(d.msg);
+            tool.tip(d.Info);
         }
         done = true;
     });
@@ -84,7 +84,7 @@
             return;
 
         tool.request({
-            url: 'DeletePost',
+            url: 'ActEditPost',
             data: p ,
             dataType: 'json',
             type: "POST",

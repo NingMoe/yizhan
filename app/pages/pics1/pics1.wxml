@@ -1,6 +1,5 @@
 <!--pics2.wxml-->
 <view ><navigator url=""><image style="width:750rpx; height:170rpx; " src="../../images/adv1.jpg" ></image></navigator></view>
-
 <view class="pics">
     <navigator url=""><image style="width:730rpx; height:336rpx;" src="../../images/pic1.jpg" ></image></navigator>
     <view class="pics_c">

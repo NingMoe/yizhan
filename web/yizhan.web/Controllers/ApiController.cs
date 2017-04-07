@@ -28,7 +28,7 @@ namespace yizhan.web.Controllers
         /// <returns></returns>
         public ActionResult Steps(int fid)
         {
-            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}",fid), 3, 1, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}",fid), 6, 1, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
         }
 
        /// <summary>
@@ -38,8 +38,18 @@ namespace yizhan.web.Controllers
        /// <param name="pn"></param>
        /// <returns></returns>
         public ActionResult Photos(int fid,int pn=1)
-        {
-            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 16, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+       {
+           var act = ActDal.GetModel(fid);
+            if(act==null)
+                return Json("null");
+
+           var where = "";
+           if (act.Depth == 1)
+               where = string.Format("RootFid={0} and Depth=3",fid);
+            else
+               where = string.Format("ParentFid={0}", fid);
+
+           return Json(ActDal.GetList(string.Format("Enable=1 {0}", where), 16, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
