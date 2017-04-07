@@ -2,7 +2,7 @@ var url = "/api/acts";
 
 Page({  
   data:{  
-      acts:{},
+      acts:[],
       website:getApp().globalData.website
   }, 
   onLoad: function () {

@@ -1,7 +1,7 @@
  Page({  
   data:{  
       fid: 0,
-      acts: {}
+      steps: []
   },  
   
   onLoad: function (options) {
@@ -17,19 +17,7 @@
           data: {fid:this.data.fid},
           success: function (res) {
               that.setData({
-                  acts: res.data
-              });
-          }
-      });
-
-      //ªÒ»°’’∆¨
-      wx.request({
-          url: that.data.website + 'Photos',
-          method: "post",
-          data: { fid: this.data.fid,pn:1 },
-          success: function (res) {
-              that.setData({
-                  acts: res.data
+                  steps: res.data
               });
           }
       });
