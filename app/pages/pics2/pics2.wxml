@@ -20,7 +20,6 @@
     </view>
 </view>
 
-
 <view class="tab_b">
   <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;"
     class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
@@ -32,6 +31,5 @@
   <loading hidden="{{hidden}}" bindchange="loadingChange">
     加载中...
   </loading>
-
 </view>
 
