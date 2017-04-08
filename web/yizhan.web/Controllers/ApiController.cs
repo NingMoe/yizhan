@@ -58,7 +58,7 @@ namespace yizhan.web.Controllers
             else
                where = string.Format("ParentFid={0}", fid);
 
-           return Json(ActDal.GetList(string.Format("Enable=1 and {0}", where), 16, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+           return Json(ActDal.GetList(string.Format("Enable=1 and {0}", where), 32, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

@@ -12,16 +12,15 @@ var GetList = function (that) {
             pn: page
         },
         success: function (res) {
-            var list = res.data;
-            for (var i = 0; i < res.data.list; i++) {
-                list.push(res.data[i]);
+            for (var i = 0; i < res.data.length; i++) {
+                res.data[i].PhotoUrl=that.data.website+res.data[i].PhotoUrl;
             }
             that.setData({
-                photos: list,
+                photos: res.data,
                 hidden: true
             });
 
-            page++;
+            //page++;
         }
     });
 }
@@ -34,7 +33,8 @@ Page({
         steps:[],
         scrollTop: 0,
         scrollHeight: 0,
-        website:getApp().globalData.website
+        website:getApp().globalData.website,
+        photoUrls:[]
     },
     onLoad: function (options) {
         //  这里要非常注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
@@ -98,6 +98,17 @@ Page({
             fid:event.currentTarget.dataset.fid
         });
         that.refresh(event);
+    },
+    previewPhoto:function(event){
+        var that = this;
+        var urls=[];
+        for (var i = 0; i < that.data.photos.length; i++) {
+                urls.push(that.data.photos[i].PhotoUrl);
+        }
+        wx.previewImage({
+        current: event.currentTarget.dataset.photoUrl, // 当前显示图片的http链接
+        urls: urls // 需要预览的图片http链接列表
+    });
     }
 });
 
