@@ -1,35 +1,29 @@
 <!-- pics2.wxml -->
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;"
+        class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
 <view class="pics2">
-    <navigator url="">
-        <image style="width:750rpx; height:226rpx;" src="../../images/adv2.jpg"></image>
-    </navigator>
+    <image style="width:750rpx; height:226rpx;" src="../../images/adv2.jpg"></image>
     <view class="pics2_in">
         <view class="pics2_in_font">
-            <ul bindtap="tabFun">
+            <ul>
                 <view class="pics2_total">
                     <label class="iconfont icon-tupian"></label>
                     <span>200</span>
                 </view>
-                <li class="{{isall? 'active' : ''}}">全部</li>
-              <view wx:for="{{steps}}">
-                <li class="{{fid==item.Id? 'active' : ''}}">{{item.Name}}</li>
-              </view>
+                <li wx:for="{{steps}}" class="{{fid==item.Id? 'active' : ''}}" data-fid="{{item.Id}}" bindtap="changeTab">{{item.Name}}</li>
             </ul>
         </view>
         <view class="pics2_in_bg"></view>
     </view>
 </view>
 
-<view class="tab_b">
-  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;"
-    class="list" bindscrolltolower="bindDownLoad" bindscroll="scroll" bindscrolltoupper="refresh">
 
-    <view class="down-item" wx:for="{{photos}}">
-        <image style="width:175rpx; height:175rpx;" src="{{item.PhotoUrl}}"></image>
-    </view>
-  </scroll-view>
-  <loading hidden="{{hidden}}" bindchange="loadingChange">
-    加载中...
-  </loading>
+<view class="tab_b">
+            <view class="down-item active">
+                <image style="width:175rpx; height:175rpx;" src="{{website+item.PhotoUrl}}" wx:for="{{photos}}"></image>
+            </view>
 </view>
+    </scroll-view>
+    <loading hidden="{{hidden}}" bindchange="loadingChange">加载中...</loading>
+
 

@@ -6,25 +6,22 @@ var GetList = function (that) {
         hidden: false
     });
     wx.request({
-        url: that.data.website + 'Photos',
+        url: that.data.website + '/api/photos',
         data: {
             fid: that.data.fid,
-            page: page
+            pn: page
         },
         success: function (res) {
-            //console.info(that.data.list);
-            var list = that.data.photos;
-            for (var i = 0; i < res.data.list.length; i++) {
-                list.push(res.data.photos[i]);
+            var list = res.data;
+            for (var i = 0; i < res.data.list; i++) {
+                list.push(res.data[i]);
             }
             that.setData({
-                photos: list
+                photos: list,
+                hidden: true
             });
 
             page++;
-            that.setData({
-                hidden: true
-            });
         }
     });
 }
@@ -36,7 +33,8 @@ Page({
         photos: [],
         steps:[],
         scrollTop: 0,
-        scrollHeight: 0
+        scrollHeight: 0,
+        website:getApp().globalData.website
     },
     onLoad: function (options) {
         //  这里要非常注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
@@ -61,9 +59,9 @@ Page({
 
         //获取环节
         wx.request({
-            url: that.data.website + 'Steps',
+            url: that.data.website + '/api/steps',
             method: "post",
-            data: { fid: this.data.fid },
+            data: { fid: that.data.fid },
             success: function (res) {
                 that.setData({
                     steps: res.data
@@ -84,11 +82,22 @@ Page({
     },
     refresh: function(event) {
         //  该方法绑定了页面滑动到顶部的事件，然后做上拉刷新
-        page = 0;
-        this.setData({
-            list: [],
+        var that = this;
+        page = 1;
+        that.setData({
+            photos: [],
             scrollTop: 0
         });
-        GetList(this);
+        GetList(that);
+    },
+    //点击标签事件
+    changeTab:function (event)
+    {
+        var that = this;
+        that.setData({
+            fid:event.currentTarget.dataset.fid
+        });
+        that.refresh(event);
     }
 });
+

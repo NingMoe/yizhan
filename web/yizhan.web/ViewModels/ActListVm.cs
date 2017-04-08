@@ -61,7 +61,7 @@ namespace yizhan.web.ViewModels
                 if(_where!=null)
                     return _where;
 
-                return _where = _fid == 0 ? "" : "ParentFId=" + _fid;
+                return _where = _fid == 0 ? "Depth=1" : "ParentFId=" + _fid;
             }
         }
 

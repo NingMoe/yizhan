@@ -2,7 +2,7 @@
 <view class="pics_line"></view>
 <view wx:for="{{acts}}">
     <view class="pics" >
-        <navigator url="../pic1?fid={{item.Id}}" open-type="redirect"><image style="width:730rpx; height:336rpx;" src="{{website}}{{item.PicUrl}}" ></image></navigator>
+        <navigator url="/pages/pics1/pics1?fid={{item.Id}}" hover-class="navigator-hover"><image style="width:730rpx; height:336rpx;" src="{{website+item.PhotoUrl}}" ></image></navigator>
         <view class="pics_b">
             <view class="pics_b_bg"></view>
             <view class="pics_b_font">{{item.Name}}</view>

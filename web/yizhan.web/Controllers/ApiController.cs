@@ -18,7 +18,7 @@ namespace yizhan.web.Controllers
         /// <returns></returns>
         public ActionResult Acts()
         {
-            return Json(ActDal.GetList("Enable=1",3,1,true,"*","OrderIndex"),JsonRequestBehavior.AllowGet);
+            return Json(ActDal.GetList("Enable=1 and Depth=1",3,1,true,"*","OrderIndex"),JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
@@ -28,11 +28,20 @@ namespace yizhan.web.Controllers
         /// <returns></returns>
         public ActionResult Steps(int fid)
         {
-            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}",fid), 6, 1, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+            var act = ActDal.GetModel(fid);
+            if (act == null)
+                return Json(null);
+
+            if (act.Depth == 1)
+                fid = act.Id;
+            else if (act.Depth == 2)
+                fid = act.ParentFid;
+
+            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 10, 1, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
         }
 
        /// <summary>
-        /// 获取照片
+       /// 获取照片
        /// </summary>
        /// <param name="fid"></param>
        /// <param name="pn"></param>
@@ -41,7 +50,7 @@ namespace yizhan.web.Controllers
        {
            var act = ActDal.GetModel(fid);
             if(act==null)
-                return Json("null");
+                return Json(null);
 
            var where = "";
            if (act.Depth == 1)
@@ -49,7 +58,7 @@ namespace yizhan.web.Controllers
             else
                where = string.Format("ParentFid={0}", fid);
 
-           return Json(ActDal.GetList(string.Format("Enable=1 {0}", where), 16, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+           return Json(ActDal.GetList(string.Format("Enable=1 and {0}", where), 16, pn, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

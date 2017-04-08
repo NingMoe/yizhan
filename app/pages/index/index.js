@@ -10,7 +10,7 @@ Page({
 
     //获取活动项目
       wx.request({
-          url: that.data.website + 'acts',
+          url: that.data.website + url,
           method: "post",
           data: {},
           success: function(res) {

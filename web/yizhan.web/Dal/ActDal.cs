@@ -121,9 +121,8 @@ namespace yizhan.web.Dal
             else
             {
                 model.RootFid = 0;
+                model.Depth = 1;
             }
-
-            model.Depth = 1;
 
             model.Id = Add(model);
 

@@ -1,7 +1,9 @@
+ var url = "/api/steps";
  Page({  
   data:{  
       fid: 0,
-      steps: []
+      steps: [],
+      website:getApp().globalData.website
   },  
   
   onLoad: function (options) {
@@ -10,9 +12,9 @@
           fid:options.fid
       });
 
-      //获取环节
+      //鑾峰彇鐜妭
       wx.request({
-          url: that.data.website + 'Steps',
+          url: that.data.website + url,
           method: "post",
           data: {fid:this.data.fid},
           success: function (res) {

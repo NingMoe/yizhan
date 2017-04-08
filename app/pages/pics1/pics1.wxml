@@ -1,18 +1,18 @@
 <!--pics2.wxml-->
-<view><navigator url=""><image style="width:750rpx; height:170rpx; " src="../../images/adv1.jpg" ></image></navigator></view>
+<view><image style="width:750rpx; height:170rpx; " src="../../images/adv1.jpg" ></image></view>
 <view wx:for="{{steps}}">
-<view class="pics">
-    <navigator url="../pic2?fid={{item.Id}}"><image style="width:730rpx; height:336rpx;" src="{{website}}{{item.PicUrl}}" ></image></navigator>
-    <view class="pics_c">
-        <view class="pics_c_bg circle"></view>
-        <navigator url="">
-            <view class="pics_c_font">
-                <span>{{item.Name}}</span>
-                <label>照片直播</label>
+    <navigator url="/pages/pics2/pics2?fid={{item.Id}}">
+        <view class="pics">
+            <image style="width:730rpx; height:336rpx;" src="{{website+item.PhotoUrl}}" ></image>
+            <view class="pics_c">
+                <view class="pics_c_bg circle"></view>
+                    <view class="pics_c_font">
+                        <span>{{item.Name}}</span>
+                        <label>照片直播</label>
+                    </view>
             </view>
-        </navigator>
-    </view>
-</view>
+        </view>
+    </navigator>
 </view>
 <view class="pics_under"></view>
 
