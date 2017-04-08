@@ -261,7 +261,9 @@
     <Content Include="images\msg.png" />
     <Content Include="images\navbg.png" />
     <Content Include="images\next.gif" />
+    <Content Include="images\nextno.gif" />
     <Content Include="images\pre.gif" />
+    <Content Include="images\preno.gif" />
     <Content Include="images\px.gif" />
     <Content Include="images\righttop.gif" />
     <Content Include="images\rlist.gif" />
@@ -299,6 +301,7 @@
     <Content Include="js\artdialog\src\popup.js" />
     <Content Include="js\cloud.js" />
     <Content Include="js\format+zh_CN,default,corechart.I.js" />
+    <Content Include="js\jqPaginator.min.js" />
     <Content Include="js\jquery-3.2.0.min.js" />
     <Content Include="js\jquery.ba-resize.min.js" />
     <Content Include="js\jquery.gvChart-1.0.1.min.js" />
@@ -307,9 +310,6 @@
     <Content Include="js\jsapi.js" />
     <Content Include="js\pages\actedit.js" />
     <Content Include="js\pages\login.js" />
-    <Content Include="js\pagination\common.css" />
-    <Content Include="js\pagination\jquery.pagination.js" />
-    <Content Include="js\pagination\pagination.css" />
     <Content Include="js\PIE.htc" />
     <Content Include="js\select-ui.min.js" />
     <Content Include="js\tool.js" />

@@ -17,6 +17,9 @@ Page({
               that.setData({
                   acts: res.data
               });
+          },
+          fail:function(res){
+                console.log(res);
           }
       });
   }

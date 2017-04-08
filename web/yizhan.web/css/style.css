@@ -126,6 +126,8 @@ h2{font-weight:normal;}
 .pagin .paginList .paginItem.more a{color:#737373;}
 .pagepre{background:url(../images/pre.gif) no-repeat center center; width:31px; height:28px;}
 .pagenxt{background:url(../images/next.gif) no-repeat center center; width:31px; height:28px;}
+.paginItem.no .pagepre{background:url(../images/preno.gif) no-repeat center center}
+.paginItem.no .pagenxt{background:url(../images/nextno.gif) no-repeat center center}
 
 /*index*/
 .mainindex{padding:20px; overflow:hidden;}

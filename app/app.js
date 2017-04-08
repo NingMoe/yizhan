@@ -26,7 +26,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    website:'https://yuchao8910.tunnel.qydev.com'
+    website:'http://localhost'
   }
 })
 

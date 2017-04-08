@@ -15,7 +15,11 @@
 <div class="rightinfo">
     <div class="tools">
         <ul class="toolbar">
-            <li class="click"><a href="@Url.Action("ActEdit", new { parentFid = Model.Fid })"><span><img src="~/images/t01.png" /></span>添加</a></li>
+            @if (Model.Fid >0)
+            {
+                <li class="click"><a href="javascript:void(0)" onclick="history.back(-1);return false;"><span></span>&lt;返回</a></li>
+            }
+            <li class="click"><a href="@Url.Action("ActEdit", new {parentFid = Model.Fid})"><span><img src="~/images/t01.png" /></span>添加</a></li>
         </ul>
     </div>
 
@@ -24,7 +28,16 @@
         {
             <li>
                 <input class="Id" type="hidden" value="@item.Id"/>
-                <span><img src="@item.PhotoUrl" style="width: 100%;height:100%" /></span>
+                <span>
+                    @if (item.Depth < 3)
+                    {
+                        <a href="@Url.Action("ActList", new {fid = item.Id, pn = 1})"><img src="@item.PhotoUrl" style="width: 100%; height: 100%" /></a>
+                    }
+                    else
+                    {
+                        <a href="@item.PhotoUrl" target="_blank"><img src="@item.PhotoUrl" style="width: 100%; height: 100%" /></a>
+                    }
+                </span>
                 <h2>
                     @if (item.Depth < 3)
                     {
@@ -32,7 +45,7 @@
                     }
                     else
                     {
-                        <a href="@item.PhotoUrl">@item.Name</a>
+                        <a href="@item.PhotoUrl" target="_blank">@item.Name</a>
                     }
                 </h2>
                 <p>
@@ -43,43 +56,28 @@
     </ul>
 
     <div class="pagin">
-        <div class="message">共<i class="blue">@Model.TotalCount</i>条记录
+        <div class="message">共<i class="blue">@Model.TotalCount</i>条记录，当前显示第&nbsp;<i class="blue">@Model.Pn&nbsp;</i>页
         </div>
-        <div id="pager" class="paginList">
-
-        </div>
+        <ul class="paginList" id="pager">
+            
+        </ul>
     </div>
     <script type="text/javascript">
-        $('#pager').pagination({
-            totalData: @Model.TotalCount,
-            showData: @Model.PageSize,
-            current: @Model.Pn,
-            coping: true,
-            callback: function(api) {
-                var data = {
-                    page: api.getCurrent()
-                };
-
-                var url = '@Url.Action("ActList", new {fid = Model.Fid})' + "&pn=" + data.page;
-                location.href = url;
-            }
-        });
-
         var lockobj = {};
         $('#list .del').click(function() {
             function submit() {
                 tool.request({
                     url: 'ActEditPost',
-                    data: {fid:$(this).find('id').val()} ,
+                    data: { fid: $(this).find('id').val() },
                     dataType: 'json',
                     type: "POST",
-                    success: function (d) {
+                    success: function(d) {
                         if (d.Success) {
                             tool.tip('保存成功');
                         } else
                             tool.tip(d.Info);
                     },
-                    error: function (e, d) {
+                    error: function(e, d) {
                         tool.tip('操作失败');
                     }
                 }, lockobj);
@@ -91,12 +89,35 @@
                 ok: submit,
                 quickClose: true,
                 cancelValue: '取消',
-                cancel: function () { }
+                cancel: function() {}
             }).show();
         });
     </script>
-@section HeaderScript{
+    @section HeaderScript{
+        <script src="~/js/jqPaginator.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                var isinit = true;
+                $('#pager').jqPaginator({
+                    totalCounts: @Model.TotalCount,
+                    pageSize: @Model.PageSize,
+                    visiblePages: 10,
+                    currentPage: @Model.Pn,
+                    activeClass: "current",
+                    disableClass:"no",
+                    prev: '<li class="paginItem"><a href="javascript:;"><span class="pagepre"></span></a></li>',
+                    next: '<li class="paginItem"><a href="javascript:;"><span class="pagenxt"></span></a></li>',
+                    page: '<li class="paginItem"><a href="javascript:;">{{page}}</a></li>',
+                    onPageChange: function(num) {
+                        if (isinit) {
+                            isinit = false;
+                            return;
+                        }
 
-    <script src="~/js/pagination/jquery.pagination.js"></script>
-}
+                        location.href = '@Url.Action("ActList", new {fid = Model.Fid})' + "&pn=" + num;
+                    }
+                });
+            });
+        </script>
+    }
 </div>

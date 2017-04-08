@@ -24,7 +24,7 @@ namespace yizhan.web.ViewModels
             _pn = pn;
         }
 
-        private int _totalCount;
+        private int _totalCount=-1;
         /// <summary>
         /// 总数
         /// </summary>

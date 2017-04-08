@@ -90,7 +90,10 @@
             type: "POST",
             success: function (d) {
                 if (d.Success) {
-                    tool.tip('保存成功');
+                    lockobj.isdone = false;
+                    tool.tip('保存成功', function() {
+                        window.location.href = document.referrer;
+                    });
                 } else
                     tool.tip(d.Info);
             },
