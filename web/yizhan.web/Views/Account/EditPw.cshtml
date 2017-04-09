@@ -1,1 +1,45 @@
-﻿
+﻿@using yizhan.web.Models
+@model yizhan.web.ViewModels.EditPwVm
+
+@section BreadCrumbs{
+    <li>首页</li>
+    <li><a href="@Url.Action("EditPw")">修改密码</a></li>
+}
+<div id="form" class="formbody">
+    <div class="formtitle"><span>修改密码</span></div>
+    <ul class="forminfo">
+        <li><label>旧密码</label><input prop-name="oldPw" type="password" class="dfinput" value="" empty="请输入旧密码"></li>
+        <li><label>新密码</label><input prop-name="newPw" type="password" class="dfinput" value="" empty="请输入新密码"></li>
+        <li><label>确认密码</label><input prop-name="newPwConfim" type="password" class="dfinput" value="" empty="请输入确认新密码"></li>
+        <li><label>&nbsp;</label><input type="button" class="submit btn" value="保存修改"></li>
+    </ul>
+</div>
+
+<script>
+    var lockobj = {};
+    var $form = $('#form');
+    $form.find('.submit').click(function () {
+        var p = tool.getParams($form);
+        if (p.newPw != p.newPwConfim) {
+            tool.tip('新密码和确认密码不一致');
+            return;
+        }
+
+        tool.request({
+            url: 'EditPwPost',
+            data: p,
+            dataType: 'json',
+            type: "POST",
+            success: function (d) {
+                if (d.Success) {
+                    lockobj.isdone = false;
+                    tool.tip('修改成功');
+                } else
+                    tool.tip(d.Info);
+            },
+            error: function (e, d) {
+                tool.tip('操作失败');
+            }
+        }, lockobj);
+    });
+</script>
