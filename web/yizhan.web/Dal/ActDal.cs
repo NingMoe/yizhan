@@ -15,21 +15,12 @@ namespace yizhan.web.Dal
     {
         public ReMsg UploadPic(HttpPostedFileBase filePosted)
         {
-            string saveBase = SiteConfig.PhotoBasePath;
-
-            var now = DateTime.Now;
-            string fileUrl = string.Format("{0}/{1}/{2}/{3}/", saveBase, now.Year, now.Month, now.Day);
-            string filePath = HttpContext.Current.Server.MapPath("~" + fileUrl);
-            string fileName = DateTime.Now.ToString("hhmmss") + new Random().Next(1, 1000) + ".jpg";
             if (filePosted.ContentLength <= 0)
             {
                 return ReMsg(false, "没有任何文件");
             }
 
-            CDirectory.Create(filePath);
-            var fileFullName = Path.Combine(filePath, fileName);
-            var b = MakeThumbnail(filePosted.InputStream, fileFullName, 730, 336, 80);
-            return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
+            return UploadPic(filePosted.InputStream);
         }
 
         /// <summary>
@@ -81,6 +72,22 @@ namespace yizhan.web.Dal
                 if (descGh != null)
                     descGh.Dispose();
             }
+        }
+
+        public ReMsg UploadPic(Stream stream)
+        {
+            string saveBase = SiteConfig.PhotoBasePath;
+
+            var now = DateTime.Now;
+            string fileUrl = string.Format("{0}/{1}/{2}/{3}/", saveBase, now.Year, now.Month, now.Day);
+            string filePath = HttpContext.Current.Server.MapPath("~" + fileUrl);
+            string fileName = DateTime.Now.ToString("hhmmss") + new Random().Next(1, 1000) + ".jpg";
+            
+
+            CDirectory.Create(filePath);
+            var fileFullName = Path.Combine(filePath, fileName);
+            var b = MakeThumbnail(stream, fileFullName, 300, 500, 80);
+            return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
         }
 
         /// <summary>

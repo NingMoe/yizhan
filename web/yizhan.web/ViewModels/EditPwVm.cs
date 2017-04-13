@@ -6,7 +6,7 @@ using yizhan.web.Models;
 
 namespace yizhan.web.ViewModels
 {
-    public class EditPwVm
+    public class EditPwVm:BaseVm
     {
         private AdminUser _admin;
         /// <summary>

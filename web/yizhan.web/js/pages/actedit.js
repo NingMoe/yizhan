@@ -75,8 +75,9 @@
     });
 })();
 
-//保存
+
 (function () {
+    //保存
     var lockobj = {};
     $form.find('.submit').click(function () {
         var p=tool.getParams($form);
@@ -94,6 +95,29 @@
                     tool.tip('保存成功', function() {
                         window.location.href = document.referrer;
                     });
+                } else
+                    tool.tip(d.Info);
+            },
+            error: function (e, d) {
+                tool.tip('操作失败');
+            }
+        }, lockobj);
+    });
+
+    //导入
+    $form.find('.import').click(function () {
+        var p = tool.getParams($form);
+        if (p == null)
+            return;
+
+        tool.request({
+            url: 'PhotoImport',
+            data: p,
+            dataType: 'json',
+            type: "POST",
+            success: function (d) {
+                if (d.Success) {
+                    tool.tip(d.Info);
                 } else
                     tool.tip(d.Info);
             },

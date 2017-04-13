@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using com.ccfw.Utility;
 
-namespace yizhan.web.App_Code
+namespace yizhan.web
 {
     /// <summary>
     /// 授权过滤器
