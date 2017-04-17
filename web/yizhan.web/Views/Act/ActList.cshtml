@@ -65,15 +65,17 @@
     <script type="text/javascript">
         var lockobj = {};
         $('#list .del').click(function() {
+            var fid = $(this).parents('li').find('.Id').val();
             function submit() {
                 tool.request({
-                    url: 'ActEditPost',
-                    data: { fid: $(this).find('id').val() },
+                    url: 'DeletePost',
+                    data: { fid:fid  },
                     dataType: 'json',
                     type: "POST",
                     success: function(d) {
                         if (d.Success) {
-                            tool.tip('保存成功');
+                            tool.tip('删除成功');
+                            window.location.href = document.referrer;
                         } else
                             tool.tip(d.Info);
                     },

@@ -12,7 +12,7 @@ using yizhan.web.ViewModels;
 
 namespace yizhan.web.Controllers.admin
 {
-    public class ActController : Controller
+    public class ActController : BaseController
     {
         /// <summary>
         /// 活动项目页面
@@ -70,49 +70,58 @@ namespace yizhan.web.Controllers.admin
         /// <param name="path"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult PhotoImport(int fid,string path)
+        public ActionResult PhotoImport(int id,string path)
         {
             var actDal = new ActDal();
-            var act = actDal.GetModel(fid);
+            var act = actDal.GetModel(id);
             if (act == null)
                 return Json("环节不存在");
 
             if (act.Depth != 2)
-                return Json("该项目不属于环节");
+                return ReJson(false,"该项目不属于环节");
 
             path = Server.MapPath("~/upload/");
             if(!Directory.Exists(path))
-                return Json("路径不存在");
+                return ReJson(false,"路径不存在");
 
             var folder = new DirectoryInfo(path);
-            var types = new[] { "jpg", "jpeg", "gif", "png","bmp" };
+            var types = new[] { ".jpg", ".jpeg", ".gif", ".png",".bmp" };
             var files=folder.GetFiles().OrderBy(_ => _.Name).ToList();
+            int validCount = 0;
             foreach (var file in files)
             {
                 if (!types.Contains(file.Extension, StringComparer.OrdinalIgnoreCase))
                     continue;
 
-                var re=actDal.UploadPic(file.OpenRead());
+                var stream = file.OpenRead();
+                var re=actDal.UploadPic(stream);
                 if (!re.Success)
                 {
-                    return Json(false,string.Format("照片名为{0}未保存成功,原因{1},可以继续点导入重试",file.Name,re.Info));
+                    return ReJson(false, string.Format("照片名为{0}未保存成功,原因{1},可以继续点导入重试", file.Name, re.Info));
                 }
 
-                var photo = new Act{Name = file.Name,ParentFid = fid,PhotoUrl = re.Info,Enable = true,OrderIndex = ConvertHelper.StrToInt(file.Name)};
+                var photo = new Act{Name = file.Name,ParentFid = id,PhotoUrl = re.Info,Enable = true,OrderIndex = ConvertHelper.StrToInt(file.Name)};
                 re=actDal.EditAct(photo);
                 if (!re.Success)
                 {
-                    return Json(false, string.Format("照片名为{0}未保存成功,原因{1},可以继续点导入重试", file.Name, re.Info));
+                    return ReJson(false, string.Format("照片名为{0}未保存成功,原因{1},可以继续点导入重试", file.Name, re.Info));
                 }
+                validCount++;
+                stream.Close();
+                file.Delete();
             }
 
-            return Json("全部导入成功");
+            if (validCount == 0)
+                return ReJson(false,"没有文件导入");
+
+            return ReJson(false,"全部导入成功");
         }
 
         /// <summary>
         /// 删除活动项目
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult DeletePost(int fid)
         {
             return Json(new ActDal().DeleteAct(fid));

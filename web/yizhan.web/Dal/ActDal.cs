@@ -86,7 +86,7 @@ namespace yizhan.web.Dal
 
             CDirectory.Create(filePath);
             var fileFullName = Path.Combine(filePath, fileName);
-            var b = MakeThumbnail(stream, fileFullName, 300, 500, 80);
+            var b = MakeThumbnail(stream, fileFullName, 400, 700, 80);
             return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
         }
 
@@ -188,7 +188,7 @@ namespace yizhan.web.Dal
         /// <returns></returns>
         private bool DeleteInner(int id)
         {
-            var list = GetList("ParentId=" + id,500,1,false,"Id");
+            var list = GetList("ParentFId=" + id,500,1,false,"Id");
             foreach (var item in list)
             {
                 var b=DeleteInner(item.Id);
