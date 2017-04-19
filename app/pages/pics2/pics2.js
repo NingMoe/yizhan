@@ -1,7 +1,12 @@
 var page = 1;
-
+var loading=false;
+var noload=false;
 //获取照片
 var GetList = function (that) {
+    if(loading)
+        return;
+
+    loading=true;
     that.setData({
         hidden: false
     });
@@ -12,15 +17,26 @@ var GetList = function (that) {
             pn: page
         },
         success: function (res) {
+            if(res.data.length==0){
+                noload=true;
+            }
+            
+            var photos=that.data.photos;
             for (var i = 0; i < res.data.length; i++) {
                 res.data[i].PhotoUrl=that.data.website+res.data[i].PhotoUrl;
+                photos.push(res.data[i]);
             }
             that.setData({
-                photos: res.data,
+                photos:photos,
                 hidden: true
             });
 
-            //page++;
+            page++;
+            loading=false;
+        },
+        fail:function(err){
+            console.log(err);
+            loading=false;
         }
     });
 }
@@ -43,7 +59,7 @@ Page({
             success: function(res) {
                 console.info(res.windowHeight);
                 that.setData({
-                    scrollHeight: res.windowHeight
+                    scrollHeight: res.windowHeight-120
                 });
             }
         });
@@ -71,6 +87,9 @@ Page({
     },
     bindDownLoad: function() {
         //  该方法绑定了页面滑动到底部的事件
+        if(noload)
+        return;
+
         var that = this;
         GetList(that);
     },
@@ -82,6 +101,7 @@ Page({
     },
     refresh: function(event) {
         //  该方法绑定了页面滑动到顶部的事件，然后做上拉刷新
+        noload=false;
         var that = this;
         page = 1;
         that.setData({
