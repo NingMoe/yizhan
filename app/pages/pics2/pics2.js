@@ -81,7 +81,7 @@ Page({
             data: { fid: that.data.fid },
             success: function (res) {
                 that.setData({
-                    steps: res.data
+                    steps: res.data.steps
                 });
             }
         });

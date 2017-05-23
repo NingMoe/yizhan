@@ -1,18 +1,17 @@
-<!--pics2.wxml-->
-<view><image style="width:750rpx; height:170rpx; " src="../../images/adv1.jpg" ></image></view>
-<view wx:for="{{steps}}">
-    <navigator url="/pages/pics2/pics2?fid={{item.Id}}">
-        <view class="pics">
-            <image style="width:730rpx; height:336rpx;" src="{{website+item.PhotoUrl}}" ></image>
-            <view class="pics_c">
-                <view class="pics_c_bg circle"></view>
-                    <view class="pics_c_font">
-                        <span>{{item.Name}}</span>
-                        <label>照片直播</label>
-                    </view>
-            </view>
-        </view>
+<view class="pics4">
+    <navigator url="">
+        <image style="width:750rpx; height:316rpx;" src="{{website+cover}}"></image>
     </navigator>
 </view>
-<view class="pics_under"></view>
-
+<view class="photo_title"><image style="width:750rpx; height:36rpx;" src="../../images/photo_title1.png"></image></view>
+<view class="photos" wx:for="{{steps}}">
+<navigator url="/pages/pics2/pics2?fid={{item.Id}}">
+    <image style="width:240rpx; height:172rpx;" src="{{website+item.PhotoUrl}}"></image>
+</navigator>
+</view>
+<view class="photo_title"><image style="width:750rpx; height:36rpx;" src="../../images/photo_title2.png"></image></view>
+<view class="photos_txt">
+    <text>1.大图分辨率高，合影建议保存</text> 
+    <text>2.小图经过压缩，可放心浏览</text> 
+    <text>3.小图大图均需点击右上角保存</text> 
+</view>

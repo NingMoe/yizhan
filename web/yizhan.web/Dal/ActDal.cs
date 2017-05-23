@@ -36,7 +36,7 @@ namespace yizhan.web.Dal
             try
             {
                 fromimg = Image.FromStream(stream);
-                descBm = new Bitmap(descWidth, descHeight);
+                descBm = new Bitmap(fromimg.Width, fromimg.Height);
                 descGh = Graphics.FromImage(descBm);
 
                 var tFormat = descBm.RawFormat;
@@ -46,7 +46,7 @@ namespace yizhan.web.Dal
 
                 var iciInfo = ImageCodecInfo.GetImageEncoders().FirstOrDefault(_ => _.FormatDescription.Equals(imageCodec));
 
-                descGh.DrawImage(Image.FromStream(stream), new Rectangle(0, 0, descWidth, descHeight));
+                descGh.DrawImage(Image.FromStream(stream), new Rectangle(0, 0, fromimg.Width, fromimg.Height));
 
                 if (iciInfo != null)
                     descBm.Save(savePath, iciInfo, ep);
@@ -86,7 +86,7 @@ namespace yizhan.web.Dal
 
             CDirectory.Create(filePath);
             var fileFullName = Path.Combine(filePath, fileName);
-            var b = MakeThumbnail(stream, fileFullName, 400, 700, 80);
+            var b = MakeThumbnail(stream, fileFullName, 1280, 854, 80);
             return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
         }
 

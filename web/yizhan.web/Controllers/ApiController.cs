@@ -37,7 +37,7 @@ namespace yizhan.web.Controllers
             else if (act.Depth == 2)
                 fid = act.ParentFid;
 
-            return Json(ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 10, 1, true, "*", "OrderIndex"), JsonRequestBehavior.AllowGet);
+            return Json(new{steps=ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 10, 1, true, "*", "OrderIndex"),cover=act.PhotoUrl}, JsonRequestBehavior.AllowGet);
         }
 
        /// <summary>
