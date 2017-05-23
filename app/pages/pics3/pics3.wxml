@@ -1,6 +1,0 @@
-<view class="pics3">
-    <navigator url=""><image style="width:750rpx; height:512rpx;" src="../../images/pic3.jpg" ></image></navigator>
-    <view class="pics3_close iconfont icon-tubiaozitihua03"></view>
-</view>
-<view class="pics3_b">请长安保存图片 / 177K</view>
-<view class="pics3_b2">vbox4083_IMG_2930_184055.JPG</view>

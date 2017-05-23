@@ -53,6 +53,7 @@ Page({
         photoUrls:[]
     },
     onLoad: function (options) {
+        page=1;
         //  这里要非常注意，微信的scroll-view必须要设置高度才能监听滚动事件，所以，需要在页面的onLoad事件中给scroll-view的高度赋值
         var that = this;
         wx.getSystemInfo({

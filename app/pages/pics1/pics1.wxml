@@ -16,7 +16,3 @@
 </view>
 <view class="pics_under"></view>
 
-<view class="down_btn circle">
-    <view class="down_btn_in circle iconfont icon-xiangxiajiantou"></view>
-</view>
-

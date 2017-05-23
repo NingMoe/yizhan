@@ -26,7 +26,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    website:'http://localhost'
+    website:'https://easeshowad.com'
   }
 })
 
