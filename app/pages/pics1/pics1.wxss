@@ -1,19 +1,11 @@
-/**pics2.wxss**/
-body{background: #fff;}
-.pics_line{width: 96%; margin:0 auto; border-top: 1px solid #808080;}
-.pics{width: 100%; margin:0 auto; margin-top: 16px; position: relative; text-align: center;}
+page{background-color: #fff;}
+.pic4{width: 100%}
+.photo_title{width: 100%; }
+.photos{width: 100%;}
+.photos image{margin: 5rpx; margin-bottom: -3px;}
+.photos_txt{width: 60%; margin: 0 auto; margin-bottom: 30px;}
+.photos_txt text{display: block; font-size: 12px;}
 
-
-.pics_c{width: 100px; height: 100px; position: absolute; top: 50%; margin-top: -50px; left: 50%; margin-left: -50px; text-align: center;}
-.pics_c_bg{width: 100px; height: 100px; position: absolute; top: 0; left: 0; background: #cb3119; filter:alpha(opacity=80);-moz-opacity: 0.8;opacity: 0.8; color: #fff; font-size: 12px; text-align: center; z-index: 999;}
-.pics_c_font{width: 100px; height: 100px; position: absolute; top: 0; left: 0; color: #fff; z-index: 99999;}
-.pics_c_font span{font-size: 18px; font-weight: bold; display: block; margin-top: 25px;}
-.pics_c_font label{font-size: 14px;  display: block;}
-
-.pics_under{width: 100%; height: 60px;}
-
-.book_white{width: 100%; padding: 5px 0 8px 0; background: #fff; position: fixed; bottom: 0; left: 0; z-index: 9999999;}
-.book_btn{width: 96%; height: 40px; margin: 0 auto; line-height: 40px; background: #2f3850; font-size: 16px; color: #fff; border-radius: 8px; text-align: center;}
-
-.down_btn{width: 40px; height: 40px; position: fixed; background: #000;  filter:alpha(opacity=70);-moz-opacity: 0.7;opacity: 0.7; right: 10px; bottom: 80px;}
-.down_btn_in{width: 34px; height: 34px; color: #fff; text-align: center; line-height: 38px; border: 1px solid #fff; position: absolute; top: 2px; left: 2px; filter:alpha(opacity=50);-moz-opacity: 0.5;opacity: 0.5; font-size: 30px;}
+.listBoxtest{width: 210rpx; height: 70px; background: #f0f0f3; margin:20rpx; margin-top: 0; float: left; text-align: center;}
+.listBoxtest span{font-size: 12px; color: #839dbe; margin-top: 16px; display: block; line-height: 14px; padding: 0 2px;}
+.listBoxtest label{font-size: 10px; color: #132f52; margin-top: 0px; display: block;}

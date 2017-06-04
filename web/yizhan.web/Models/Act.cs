@@ -53,5 +53,10 @@ namespace yizhan.web.Models
         /// 根节点
         /// </summary>
         public int RootFid { get; set; }
+
+        /// <summary>
+        /// 简介
+        /// </summary>
+        public string Intro { get; set; }
     }
 }

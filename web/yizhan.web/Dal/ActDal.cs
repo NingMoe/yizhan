@@ -130,9 +130,9 @@ namespace yizhan.web.Dal
                 model.RootFid = 0;
                 model.Depth = 1;
             }
-
+            model.Intro = model.Intro;
             model.Id = Add(model);
-
+            
             if (model.RootFid == 0)
             {
                 model.RootFid = model.Id;
@@ -157,6 +157,7 @@ namespace yizhan.web.Dal
             act.Name = model.Name;
             act.OrderIndex = model.OrderIndex;
             act.PhotoUrl = model.PhotoUrl;
+            act.Intro = model.Intro;
 
             Update(act);
 

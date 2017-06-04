@@ -1,17 +1,12 @@
 <view class="pics4">
-    <navigator url="">
-        <image style="width:750rpx; height:316rpx;" src="{{website+cover}}"></image>
-    </navigator>
+     <image style="width:750rpx; height:316rpx;" src="{{website+cover}}"></image>
 </view>
-<view class="photo_title"><image style="width:750rpx; height:36rpx;" src="../../images/photo_title1.png"></image></view>
-<view class="photos" wx:for="{{steps}}">
+<view class="photo_title"><image style="width:750rpx; height:105rpx;" src="../../images/photo_title1.png"></image></view>
+<view class="listBoxtest" wx:for="{{steps}}">
 <navigator url="/pages/pics2/pics2?fid={{item.Id}}">
-    <image style="width:240rpx; height:172rpx;" src="{{website+item.PhotoUrl}}"></image>
+     <span>{{item.Name}}</span>
+    <label>{{item.Intro}}</label>
 </navigator>
 </view>
-<view class="photo_title"><image style="width:750rpx; height:36rpx;" src="../../images/photo_title2.png"></image></view>
-<view class="photos_txt">
-    <text>1.大图分辨率高，合影建议保存</text> 
-    <text>2.小图经过压缩，可放心浏览</text> 
-    <text>3.小图大图均需点击右上角保存</text> 
-</view>
+<view class="clear"></view>
+<view class="photo_title"><image style="width:750rpx; height:366rpx;" src="../../images/foot_text2.gif"></image></view>

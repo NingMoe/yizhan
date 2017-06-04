@@ -33,13 +33,17 @@
     <div class="formtitle"><span>@(Model.Fid>0?"修改":"添加")@title</span></div>
     <ul class="forminfo">
         <li><label>标题</label><input prop-name="Name" type="text" class="dfinput" value="@Model.Act.Name" empty="标题不能为空"></li>
+@if (Model.Act.Depth == 2)
+{
+    <li><label>描述</label><input prop-name="Intro" type="text" class="dfinput" value="@Model.Act.Intro"></li>
+}
         <li><label>&nbsp;</label><span class="fileList"><img id="photoPreview" src="@Model.Act.PhotoUrl" style="height:500px;width:300px;" /></span></li>
         <li><label>照片</label><input type="file" value="选择照片" class="addImg"><input class="photoUrl" prop-name="PhotoUrl" type="hidden" value="@Model.Act.PhotoUrl" empty="照片不能为空"/></li>
         @if (Model.Act.Depth == 2)
         {
             <li><label>导入路径</label><input prop-name='importPath' type="text" class="dfinput " value="/upload/"><input type="button" class="import btn" value="批量导入"></li>
         }
-        <li><label>是否启用</label><cite prop-datatype="radio" prop-name="Enable"><input type="radio" value="true" @(Model.Fid==0 || Model.Act.Enable ? "checked=\"checked\"" : "") name="PhotoUrl">是&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="false" @(Model.Act.Enable ? "":"checked=\"checked\"" ) name="PhotoUrl">否</cite></li>
+        <li><label>是否启用</label><cite prop-datatype="radio" prop-name="Enable"><input type="radio" value="true" @(Model.Fid==0 || Model.Act.Enable ? "checked=\"checked\"" : "") name="PhotoUrl">是&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="false" @(Model.Fid == 0 || Model.Act.Enable ? "" : "checked=\"checked\"") name="PhotoUrl">否</cite></li>
         <li><label>排序</label><input prop-name="OrderIndex" name="" type="text" class="dfinput" value="@Model.Act.OrderIndex"></li>
         <li><label>&nbsp;</label><input type="button" class="submit btn" value="确认保存"></li>
     </ul>
