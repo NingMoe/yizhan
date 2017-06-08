@@ -50,7 +50,8 @@ Page({
         scrollTop: 0,
         scrollHeight: 0,
         website:getApp().globalData.website,
-        photoUrls:[]
+        photoUrls:[],
+        cover:''
     },
     onLoad: function (options) {
         page=1;
@@ -81,7 +82,8 @@ Page({
             data: { fid: that.data.fid },
             success: function (res) {
                 that.setData({
-                    steps: res.data.steps
+                    steps: res.data.steps,
+                    cover:res.data.cover
                 });
             }
         });
