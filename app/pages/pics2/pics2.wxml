@@ -4,7 +4,6 @@
     <view class="pics2_in">
         <view class="pics2_in_font">
             <ul>
-               
                 <li wx:for="{{steps}}" class="{{fid==item.Id? 'active' : ''}}" data-fid="{{item.Id}}" bindtap="changeTab">{{item.Name}}</li>
             </ul>
         </view>
@@ -16,7 +15,7 @@
 <view class="tab_b">
 <scroll-view scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
             <view class="down-item active">
-                <image style="width:174rpx; height:174rpx;" src="{{item.PhotoUrl}}" wx:for="{{photos}}" bindtap="previewPhoto" data-photoUrl="{{item.PhotoUrl}}"></image>
+                <image style="width: 236rpx; height: 158rpx; " src="{{item.PhotoUrl}}" wx:for="{{photos}}" bindtap="previewPhoto" data-photoUrl="{{item.PhotoUrl}}"></image>
             </view>
 </scroll-view>
 </view>

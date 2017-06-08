@@ -14,4 +14,4 @@ page{background-color: #030303;}
 .down-item{color: #fff; display: none; padding-left: 5rpx}
 .down-item.active{display: block;}
 .down-item ul li{width:21%; margin: 0 2%; margin-bottom: 4px; float: left;}
-.down-item image{margin: 7rpx; margin-bottom: -3px;}
+.down-item image{margin: 7rpx; margin-top:20rpx; margin-bottom: -25rpx}
