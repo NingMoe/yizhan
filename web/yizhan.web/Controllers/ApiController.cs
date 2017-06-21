@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using yizhan.web.Dal;
-using yizhan.web.Models;
 
 namespace yizhan.web.Controllers
 {
@@ -38,17 +37,9 @@ namespace yizhan.web.Controllers
             else if (act.Depth == 2)
                 fid = act.ParentFid;
 
-            var cover = act.PhotoUrl;
-            if (act.Depth == 2)
-            {
-                var rootAct = ActDal.GetModel(act.RootFid);
-                if (rootAct == null)
-                    return Json(null);
+            var rootAct = ActDal.GetModel(act.RootFid);
 
-                cover = rootAct.PhotoUrl;
-            }
-
-            return Json(new { steps = ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 10, 1, true, "*", "OrderIndex"), cover = cover }, JsonRequestBehavior.AllowGet);
+            return Json(new { steps = ActDal.GetList(string.Format("Enable=1 and ParentFid={0}", fid), 10, 1, true, "*", "OrderIndex"), cover = rootAct == null ? "" : rootAct.PhotoUrl }, JsonRequestBehavior.AllowGet);
         }
 
        /// <summary>

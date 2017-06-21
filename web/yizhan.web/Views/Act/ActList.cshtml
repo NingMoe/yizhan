@@ -75,7 +75,7 @@
                     success: function(d) {
                         if (d.Success) {
                             tool.tip('删除成功');
-                            window.location.href = document.referrer;
+                            location.replace(location.href);
                         } else
                             tool.tip(d.Info);
                     },

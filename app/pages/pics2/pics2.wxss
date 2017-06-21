@@ -10,8 +10,8 @@ page{background-color: #030303;}
 .pics2_total span{font-size: 12px;}
 .pics2_in_font ul li{float: left; color: #ededed; font-size: 16px; margin-left: 16px; font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
 .pics2_in_font ul li.active{color: #cb2d14; }
-.tab_b{margin-top: 120px;}
+.tab_b{margin-top: 210px;}
 .down-item{color: #fff; display: none; padding-left: 5rpx}
 .down-item.active{display: block;}
 .down-item ul li{width:21%; margin: 0 2%; margin-bottom: 4px; float: left;}
-.down-item image{margin: 7rpx; margin-top:20rpx; margin-bottom: -25rpx}
+.down-item image{margin: 7rpx; margin-bottom: -3px;}

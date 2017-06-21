@@ -23,8 +23,8 @@ var GetList = function (that) {
             
             var photos=that.data.photos;
             for (var i = 0; i < res.data.length; i++) {
-                res.data[i].PhotoUrl=that.data.website+res.data[i].PhotoUrl;
-                photos.push(res.data[i]);
+              res.data[i].PhotoUrl = that.data.website + (res.data[i].PhotoUrl.replace('.', '_s.'));
+              photos.push(res.data[i]);
             }
             that.setData({
                 photos:photos,
@@ -83,7 +83,7 @@ Page({
             success: function (res) {
                 that.setData({
                     steps: res.data.steps,
-                    cover:res.data.cover
+                    cover: that.data.website+res.data.cover
                 });
             }
         });

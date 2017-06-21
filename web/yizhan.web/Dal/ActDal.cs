@@ -28,47 +28,38 @@ namespace yizhan.web.Dal
         /// </summary>
         /// <param name="descWidth"></param>
         /// <param name="descHeight"></param>
-        public static bool MakeThumbnail(Stream stream, string savePath, int descWidth, int descHeight, long quality, string imageCodec = "JPEG")
+        public static bool MakeThumbnail(Image fromimg, string savePath, int descWidth, int descHeight, long quality, string imageCodec = "JPEG")
         {
             Bitmap descBm = null;
             Graphics descGh = null;
-            Image fromimg = null;
             try
             {
-                fromimg = Image.FromStream(stream);
-                descBm = new Bitmap(fromimg.Width, fromimg.Height);
+                descBm = new Bitmap(descWidth, descHeight);
                 descGh = Graphics.FromImage(descBm);
 
                 var tFormat = descBm.RawFormat;
                 long[] qy = { quality }; //设置压缩的比例1-100 
                 var ep = new EncoderParameters();
-                ep.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qy);
+                ep.Param[0] = new EncoderParameter(Encoder.Quality, qy);
 
                 var iciInfo = ImageCodecInfo.GetImageEncoders().FirstOrDefault(_ => _.FormatDescription.Equals(imageCodec));
-
-                descGh.DrawImage(Image.FromStream(stream), new Rectangle(0, 0, fromimg.Width, fromimg.Height));
+                descGh.DrawImage(fromimg, new Rectangle(0, 0, descWidth, descHeight));
 
                 if (iciInfo != null)
                     descBm.Save(savePath, iciInfo, ep);
                 else
                     descBm.Save(savePath, tFormat);
 
-                fromimg.Dispose();
-
                 return true;
             }
             catch (Exception ex)
             {
-                return false;
+                throw;
             }
             finally
             {
-                if (fromimg != null)
-                    fromimg.Dispose();
-
                 if (descBm != null)
                     descBm.Dispose();
-
                 if (descGh != null)
                     descGh.Dispose();
             }
@@ -81,12 +72,32 @@ namespace yizhan.web.Dal
             var now = DateTime.Now;
             string fileUrl = string.Format("{0}/{1}/{2}/{3}/", saveBase, now.Year, now.Month, now.Day);
             string filePath = HttpContext.Current.Server.MapPath("~" + fileUrl);
-            string fileName = DateTime.Now.ToString("hhmmss") + new Random().Next(1, 1000) + ".jpg";
-            
+            string fileName = DateTime.Now.ToString("hhmmss") + new Random().Next(1, 1000);
+            string smallFileName = fileName + "_s";
+            fileName += ".jpg";
+            smallFileName += ".jpg";
 
             CDirectory.Create(filePath);
             var fileFullName = Path.Combine(filePath, fileName);
-            var b = MakeThumbnail(stream, fileFullName, 1280, 854, 80);
+            var smallFileFullName = Path.Combine(filePath, smallFileName);
+
+            var fromimg = Image.FromStream(stream);
+            bool b = false;
+            try
+            {
+                 b = MakeThumbnail(fromimg, fileFullName, fromimg.Width, fromimg.Height, 80);
+                if(b)
+                    b = MakeThumbnail(fromimg, smallFileFullName, 250, 250, 80);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.AddLog(ex.ToString());
+            }
+            finally
+            {
+                if (fromimg != null)
+                    fromimg.Dispose();
+            }
             return ReMsg(b, b ? fileUrl + fileName : "缩略图存储失败");
         }
 
