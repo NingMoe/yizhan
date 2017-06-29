@@ -23,6 +23,7 @@ var GetList = function (that) {
             
             var photos=that.data.photos;
             for (var i = 0; i < res.data.length; i++) {
+              res.data[i].PhotoUrl_ori = that.data.website + res.data[i].PhotoUrl;
               res.data[i].PhotoUrl = that.data.website + (res.data[i].PhotoUrl.replace('.', '_s.'));
               photos.push(res.data[i]);
             }
@@ -123,13 +124,14 @@ Page({
         that.refresh(event);
     },
     previewPhoto:function(event){
+        console.log(event.currentTarget.dataset.PhotoUrl_ori);
         var that = this;
         var urls=[];
         for (var i = 0; i < that.data.photos.length; i++) {
-                urls.push(that.data.photos[i].PhotoUrl);
+                urls.push(that.data.photos[i].PhotoUrl_ori);
         }
         wx.previewImage({
-        current: event.currentTarget.dataset.photoUrl, // 当前显示图片的http链接
+        current: event.currentTarget.dataset.PhotoUrl_ori, // 当前显示图片的http链接
         urls: urls // 需要预览的图片http链接列表
     });
     }

@@ -3,12 +3,14 @@
         <image style="width:750rpx; height:316rpx;" src="{{website+cover}}"></image>
     </navigator>
 </view>
-<view class="photo_title"><image style="width:750rpx; height:60rpx;" src="../../images/photo_title1.png"></image></view>
-<view class="listBoxtest" wx:for="{{steps}}">
-<navigator url="/pages/pics2/pics2?fid={{item.Id}}">
-     <label>{{item.Name}}</label>
-    <span>{{item.Intro}}</span>
-</navigator>
-</view>
+<view class="photo_title"><image style="width:750rpx; height:105rpx;" src="../../images/photo_title1.png"></image></view>
+<view class="listBoxtest_all">
+    <view class="listBoxtest" wx:for="{{steps}}">
+    <navigator url="/pages/pics2/pics2?fid={{item.Id}}">
+        <label>{{item.Name}}</label>
+        <span>{{item.Intro}}</span>
+        </navigator>
+    </view>
 <view class="clear"></view>
-<view class="photo_title"><image style="width:750rpx; height:230rpx;" src="../../images/foot_text2.gif"></image></view>
+</view>
+<view class="photo_title" style="margin-top:20px"><image style="width:750rpx; height:230rpx;" src="../../images/foot_text2.gif"></image></view>
