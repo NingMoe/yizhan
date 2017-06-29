@@ -124,14 +124,13 @@ Page({
         that.refresh(event);
     },
     previewPhoto:function(event){
-        console.log(event.currentTarget.dataset.PhotoUrl_ori);
         var that = this;
         var urls=[];
         for (var i = 0; i < that.data.photos.length; i++) {
                 urls.push(that.data.photos[i].PhotoUrl_ori);
         }
         wx.previewImage({
-        current: event.currentTarget.dataset.PhotoUrl_ori, // 当前显示图片的http链接
+        current: event.currentTarget.dataset.photourl, // 当前显示图片的http链接
         urls: urls // 需要预览的图片http链接列表
     });
     }

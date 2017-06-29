@@ -15,7 +15,7 @@
 <view class="tab_b">
 <scroll-view scroll-y="true" style="height:{{scrollHeight}}px" bindscrolltolower="bindDownLoad" bindscrolltoupper="refresh">
             <view class="down-item active">
-                <image style="width: 236rpx; height: 158rpx; " src="{{item.PhotoUrl}}" wx:for="{{photos}}" bindtap="previewPhoto" data-photoUrl="{{item.PhotoUrl_ori}}"></image>
+                <image style="width: 236rpx; height: 158rpx; " src="{{item.PhotoUrl}}" wx:for="{{photos}}" bindtap="previewPhoto" data-photourl="{{item.PhotoUrl_ori}}"></image>
             </view>
 </scroll-view>
 </view>
