@@ -2,7 +2,7 @@
 page{background-color: #030303;}
 .pics_line{width: 96%; margin:0 auto; border-top: 1px solid #808080;}
 .pics2{width:100%; position: fixed; top: 0px; left: 0px;}
-.pics2_in{width: 100%; height: 30px; line-height: 30px; position: absolute; left: 0; bottom: 0;}
+.pics2_in{width: 100%; height: 30px; line-height: 30px; position: absolute; left: 0; bottom: -24px;}
 .pics2_in_bg{width: 100%; height: 30px; line-height: 30px; position: absolute; left: 0; top: 0; background: #2f3850; filter:alpha(opacity=88);-moz-opacity: 0.88;opacity: 0.88; }
 .pics2_in_font{width: 100%; height: 30px; line-height: 30px; color: #ededed; position: absolute; left: 0; top: 0; color: #fff; z-index: 999}
 .pics2_total{float: left; margin-left: 16px; color: #ededed;}
@@ -10,7 +10,7 @@ page{background-color: #030303;}
 .pics2_total span{font-size: 12px;}
 .pics2_in_font ul li{float: left; color: #ededed; font-size: 16px; margin-left: 16px; font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
 .pics2_in_font ul li.active{color: #cb2d14; }
-.tab_b{margin-top: 210px;}
+.tab_b{margin-top: 132px;}
 .down-item{color: #fff; display: none; padding-left: 5rpx}
 .down-item.active{display: block;}
 .down-item ul li{width:21%; margin: 0 2%; margin-bottom: 4px; float: left;}
