@@ -10,7 +10,7 @@ page{background-color: #030303;}
 .pics2_total span{font-size: 12px;}
 .pics2_in_font ul li{float: left; color: #ededed; font-size: 16px; margin-left: 16px; font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
 .pics2_in_font ul li.active{color: #cb2d14; }
-.tab_b{margin-top: 132px;}
+.tab_b{margin-top: 388rpx;}
 .down-item{color: #fff; display: none; padding-left: 5rpx}
 .down-item.active{display: block;}
 .down-item ul li{width:21%; margin: 0 2%; margin-bottom: 4px; float: left;}
